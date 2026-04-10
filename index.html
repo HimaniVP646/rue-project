@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUE — Recursive Understanding Engine</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-layout">
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">History</span>
+      <button onclick="clearHistory()" class="clear-btn">Clear</button>
+    </div>
+    <div id="history-list" class="history-list"></div>
+  </aside>
+  <main id="main-content">
+  <!-- Background grid -->
+  <div class="bg-grid"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <span class="logo-icon">⟳</span>
+      <div>
+        <span class="logo-title">RUE</span>
+        <span class="logo-sub">Recursive Understanding Engine</span>
+      </div>
+    </div>
+    <div id="api-badge" class="api-badge mock">● MOCK MODE</div>
+    
+  </header>
+  </header>
+<button id="new-chat-btn" onclick="newChat()">+ New Chat</button>
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-tagline">True understanding, one concept at a time.</p>
+    <h1 class="hero-title">Ask anything.<br><em>Understand everything.</em></h1>
+    <p class="hero-desc">Don't just get an answer — explore every term recursively until nothing is unclear.</p>
+  </section>
+
+  <!-- Search -->
+  <div class="search-container">
+    <div class="search-box">
+      <input id="question-input" type="text" placeholder="e.g. What is LIME in AI?" autocomplete="off" spellcheck="false" />
+      <button id="ask-btn" onclick="handleAsk()">
+        <span class="btn-text">Explore</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+    <div class="example-pills">
+      <span class="pill-label">Try:</span>
+      <button class="pill" onclick="setExample('What is a neural network?')">Neural Network</button>
+      <button class="pill" onclick="setExample('What is LIME in AI?')">LIME in AI</button>
+      <button class="pill" onclick="setExample('How does backpropagation work?')">Backpropagation</button>
+      <button class="pill" onclick="setExample('What is quantum entanglement?')">Quantum Entanglement</button>
+    </div>
+  </div>
+
+  <!-- Multi-Explanation -->
+  <div class="multi-box">
+    <h3 class="multi-title"> Multi-Explanation Mode </h3>
+    <div class="multi-buttons">
+      <button class="multi-btn" onclick="selectExplain(this); loadExplanation(currentConcept,'definition')"> Definition </button>
+      <button class="multi-btn" onclick="selectExplain(this); loadExplanation(currentConcept,'analogy')"> Analogy </button>
+      <button class="multi-btn" onclick="selectExplain(this); loadExplanation(currentConcept,'example')"> Example </button>
+    </div>
+    <div id="explanation-test" class="multi-output"> Click a mode to see explanation ✨ </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <span>Thinking recursively...</span>
+  </div>
+
+  <!-- Exploration tree -->
+  <div id="exploration-root" class="exploration-root"></div>
+
+  <!-- Empty state -->
+  <div id="empty-state" class="empty-state">
+    <div class="empty-icon">◈</div>
+    <p>Your understanding tree will grow here.</p>
+    <p class="empty-sub">Each answer branches into concepts. Each concept branches further.</p>
+  </div>
+
+  <script src="/static/script.js"></script>
+  </main>
+</div>
+</body>
+</html>
